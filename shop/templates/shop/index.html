@@ -1,0 +1,725 @@
+{% extends 'shop/basic_page.html' %}
+{% block css %}
+
+
+.col-md-3
+{
+display: inline-block;
+margin-left:100px;
+}
+.carousel-indicators .active {
+background-color: blue;
+}
+.col-md-3 img{
+width: 300px;
+height: 200px;
+}
+body .carousel-indicator li{
+background-color: blue;
+}
+body .carousel-indicators{
+bottom: -40px;
+}
+ .carousel-indicators li{
+background-color: #7270fc;
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: blue;
+}
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+padding-top: 222px;
+}
+/* ------------------------------------------------------------ */
+main[role="main"], .product .product-description {
+    *zoom: 1;
+}
+main[role="main"]:after, .product .product-description:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+/*
+    *, *::after, *::before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: url("../img/main-bg.png");
+        color: #aaa;
+        font-size: 14px;
+        font-family: 'MavenProRegular', arial, tahoma, trebuchet ms, verdana;
+        height: 100%;
+    }
+*/
+
+p {
+    margin: 0 0 30px;
+}
+a {
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    color: #31353d;
+    margin: 0;
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
+abbr {
+    cursor: help;
+}
+
+img {
+    max-width: 100%;
+}
+figure {
+    margin: 0;
+    line-height: 0;
+}
+main[role="main"] {
+    max-width: 500px;
+    margin: 20px auto;
+    position: relative;
+}
+.product {
+    background: #fff;
+    max-width: 300px;
+    position: relative;
+    z-index: 15;
+    margin: 0 auto;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+.product .product-description {
+    position: relative;
+    z-index: 15;
+    background: #fff;
+}
+.product .product-description .info {
+    padding: 10px;
+    color: #aaa;
+    font-size: 0.85em;
+    width: 70%;
+    float: left;
+   /* background-color: red; */
+}
+.product .product-description .info h1 {
+    font-size: 20px;
+    margin: 0 0 5px;
+}
+.product .product-description .info p {
+    margin-bottom: 10px;
+    line-height: 1.3em;
+}
+.product .product-description .price {
+    width: 25%;
+    /* background-color: yellow;*/
+    float: left;
+    color: #9bb6aa;
+    font-size: 1.5em;
+    position: relative;
+    margin-top: 5px;
+}
+.product .product-description .price::before {
+    content: 'Rs';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    font-size: 0.40em;
+}
+    .product .product-sidebar 
+    {
+        height: 100%;
+        background: #31353d;
+        width: 50px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        -webkit-transition: right 0.3s ease;
+        -moz-transition: right 0.3s ease;
+        -o-transition: right 0.3s ease;
+        transition: right 0.3s ease;
+        -webkit-border-radius: 0 2px 2px 0;
+        -moz-border-radius: 0 2px 2px 0;
+        -o-border-radius: 0 2px 2px 0;
+        border-radius: 0 2px 2px 0;
+    }
+
+/*--------------------------------------------------------------------------------*/
+    /* .product .product-sidebar 
+    {
+        width: 100%;
+        height: 50px;
+        bottom: 0px;
+        left: 0;
+        top: inherit;
+        -webkit-border-radius: 0 0px 2px 2px;
+        -moz-border-radius: 0 0px 2px 2px;
+        -o-border-radius: 0 0px 2px 2px;
+        border-radius: 0 0px 2px 2px;
+        -webkit-transition: bottom 0.3s ease;
+        -moz-transition: bottom 0.3s ease;
+        -o-transition: bottom 0.3s ease;
+        transition: bottom 0.3s ease;
+    }*/
+/* ============================================================================== */
+.product .product-sidebar button {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 0.9em;
+    font-size: 0.8em;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.product .product-sidebar button.buy {
+    background: transparent url("https://raw.githubusercontent.com/brunodsgn/productpreview/master/assets/img/icons/buy.png") no-repeat 15px;
+}
+.product .product-sidebar button.info {
+    background: transparent url("https://raw.githubusercontent.com/brunodsgn/productpreview/master/assets/img/icons/info.png") no-repeat 15px;
+}
+.product .product-sidebar button.size {
+    background: transparent url("https://raw.githubusercontent.com/brunodsgn/productpreview/master/assets/img/icons/sizes.png") no-repeat 15px;
+}
+.product .product-sidebar button.colors {
+    background: transparent url("https://raw.githubusercontent.com/brunodsgn/productpreview/master/assets/img/icons/colors.png") no-repeat 15px;
+}
+.product .product-sidebar button.colors span {
+    margin-left: 40px;
+}
+.product .product-sidebar button.colors:hover {
+    width: 130px;
+}
+.product .product-sidebar button.colors .color {
+    padding: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=70);
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.product .product-sidebar button.colors .color.black {
+    background: #000;
+    border-bottom: 2px solid #555;
+}
+.product .product-sidebar button.colors .color.white {
+    background: #fff;
+    border-bottom: 2px solid #e5e5e5;
+}
+.product .product-sidebar button.colors .color.red {
+    background: #ea1535;
+    border-bottom: 2px solid #ef566d;
+}
+.product .product-sidebar button.colors .color:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.product .product-sidebar button span {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    white-space: nowrap;
+    margin-left: 30px;
+}
+.product .product-sidebar button:hover {
+    width: 130px;
+    background-color: #9bb6aa;
+    position: relative;
+    background-position: 15px center;
+    border-color: #9bb6aa;
+}
+.product .product-sidebar button:hover span {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+.product:hover .product-sidebar {
+    right: -50px;
+}
+
+
+
+{% endblock %}
+{% block body %}
+{% load static %}
+      <div class="fadein" style=" height: 600px; align-items: baseline; text-align: justify;">
+        <img id="f1" src="/media/A_shop/assests/theme-image19.jpg" style="width: 98%; height: 600px" alt="...">
+        <img id="f2" src="/media/A_shop/assests/theme-image20.jpg" style="width: 98%; height: 600px" alt="...">
+        <img id="f3" src="/media/A_shop/assests/theme-image21.jpg" style="width: 98%;  height: 600px" alt="...">
+      </div>
+    <!-- -----------------------------------------------------------------------------------------------------  -->
+    <div class="sta-2">
+        <p style="font-size:2vw;"> Luxurious and Contemporary Appeal – for every Women. Nishat Linen prints are here and ready for every season for your life!</p>
+    </div>
+    <!-- -----------------------------------------------------------------------------------------------------  -->
+    <section class="details-card" style="background-color:white;">
+        <!-- <div class="container">  class="container-fluid" -->
+        <div class="row">
+            <!-- width: 100px; height:500px -->
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="card-content">
+                    <div class="card-img">
+                        <div class="big-img">
+                            <img src="/media/A_shop/assests/theme-image4.jpg" alt="" style=" width: 100%;height:800px">
+                            <span><b>SHOP NOW</b></span>
+                            <h3 style="font-family:Tiemann,serif">UNSTITCHED</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="card-content">
+                    <div class="card-img">
+                        <div class="big-img">
+                            <img src="/media/A_shop/assests/theme-image5.jpg" alt="" style=" width: 100% ;height:800px;">
+                            <span><b>SHOP NOW</b></span>
+                            <h3 style="font-family:Tiemann,serif">LUXURY</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+      </section>
+    <!-- =================================================================================== -->
+        <!-- <div style="margin-top:20px;"> -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <img src="/media/A_shop/assests/theme-image1.jpg" alt="" style=" width: 100% ">
+            </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <img src="/media/A_shop/assests/theme-image2.jpg" alt="" style=" width: 100% ;height:300px;">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <img src="/media/A_shop/assests/theme-image3.jpg" alt="" style=" width: 100% ;height:300px;">
+            </div>
+        </div>
+        <!-- </div> -->
+        <div class="sta-1">
+            <h3 style="font-family:Tiemann,serif">SHOP BY CATEGORY</h3>
+            <button class="btn btn-primery">View All</button>
+        </div>
+    <!-- =================================================================================== -->
+    <div class="container">
+        <!--Slideshow starts here -->
+        {% for product, range, nSlides in allProds %}
+        <h5 class="my-4">Product's On {{product.0.category}} - Recommended Items</h5>
+        <div class="row">
+            <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                    {% for i in range %}
+                    <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                    {% endfor %}
+                </ul>
+                <div class="container carousel-inner no-padding">
+                    <div class="carousel-item active">
+                        {% for i in product %}
+                        <div class="col-xs-2 col-sm-2 col-md-3">
+                            <div class="card-block ">
+                                <div class="card-body  ">
+                                    <!-- __________________________________________________________________________________________ -->
+                                    <main role="main" class="bg-">
+                                        <div class="product">
+                                            <figure>
+                                                <!--
+                                                    <img src="https://raw.githubusercontent.com/itbruno/productpreview/master/assets/img/t-shirt.jpg" alt="Product Image" class="product-image">
+                                                -->
+                                                    <div class="zoom-effect-container">
+                                                    <div class="card-hover">
+                                                        <a href="/shop/productview/{{i.id}}" class="text-decoration-none"  style="vertical-align:middle" id="qv{{i.id}}">
+                                                            <img src="/media/{{i.image}}" alt="Product Image" class="product-image">
+                                                        </a>
+                                                    </div>
+                                            </figure>
+                                            <div class="product-description">
+                                            <div class="info">
+                                                <h1 id="namepr{{i.id}}">{{i.product_name}}</h1>
+                                                <p class="card-text">
+                                                {{i.product_descri|slice:"0:25"}}...
+                                                </p>
+                                            </div>
+                                            <div class="price" id="pricepr{{i.id}}">
+                                                {{i.price}}
+                                            </div>
+                                            </div>
+                                            <div class="product-sidebar">
+                                            <button class="buy">
+                                                <span>BUY ITEM</span>
+                                            </button>
+                                            <button class="info">
+                                                <span>MORE INFO</span>
+                                            </button>
+                                    
+                                            <button class="size">
+                                                <span>SIZES</span>
+                                            </button>
+                                    
+                                            <button class="colors">
+                                                <span>
+                                                <a href="" class="color black"></a>
+                                                <a href="" class="color white"></a>
+                                                <a href="" class="color red"></a>
+                                                </span>
+                                            </button>
+                                            </div>
+                                        </div>
+                                    </main>
+                                    <!-- ______________________________________________________________________________________ -->
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                    </div>
+                    <div class="carousel-item">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- left and right controls for the slide -->
+            <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+        {% endfor %}
+
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <div class="sta-1">
+            <h3 style="font-family:Tiemann,serif">FEATURED COLLECTION</h3>
+              <button class="btn btn-primery">View All</button>
+          </div>
+          <section class="details-card" style="background-color:white;">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- width: 100px; height:500px style="background-color:sandybrown;"  -->
+
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <a class="card-block stretched-link text-decoration-none" href>
+                            <div class="card text-center">
+                                <div class="card-content">
+                                    <div class="card-img">
+                                        <img src="/media/A_shop/assests/theme-image14.jpg" alt="" style="height:250px " ;>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <span class="card-date">Apr 23, 2021</span>
+                                    <p class="card-text">New Arrivals by Nishat Are Stealing the Show
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <a class="card-block stretched-link text-decoration-none" href>
+                            <div class="card text-center">
+                                <div class="card-content">
+                                    <div class="card-img">
+                                        <img src="/media/A_shop/assests/theme-image15.jpg" alt="" style="height:250px " ;>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <span class="card-date">Apr 23, 2021</span>
+                                    <p class="card-text">Dress up with elegance, in Nishat’s unstitched Eid collection 2021
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <a class="card-block stretched-link text-decoration-none" href>
+                            <div class="card text-center">
+                                <div class="card-content">
+                                    <div class="card-img">
+                                        <img src="/media/A_shop/assests/theme-image16.jpg" alt="" style="height:250px " ;>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <span class="card-date">Apr 23, 2021</span>
+                                    <p class="card-text">Nishat Linen Creations - Amalgam of Style and Fashion
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ------------------------------------------------------------------------------------------------------ -->
+
+    </div>
+        {% endblock %}
+
+        {% block js %}
+<script>
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
+
+    $(window).on("load resize", function() {
+        if (this.matchMedia("(min-width: 500px)").matches) {
+            $dropdown.hover(
+                function() {
+                    const $this = $(this);
+                    $this.addClass(showClass);
+                    $this.find($dropdownToggle).attr("aria-expanded", "true");
+                    $this.find($dropdownMenu).addClass(showClass);
+                },
+                function() {
+                    const $this = $(this);
+                    $this.removeClass(showClass);
+                    $this.find($dropdownToggle).attr("aria-expanded", "false");
+                    $this.find($dropdownMenu).removeClass(showClass);
+                }
+            );
+        } else {
+            $dropdown.off("mouseenter mouseleave");
+        }
+    });
+    // ___________________________________________________________________
+    document.addEventListener("DOMContentLoaded", function() {
+        // make it as accordion for smaller screens
+        if (window.innerWidth < 992) {
+
+            // close all inner dropdowns when parent is closed
+            document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown) {
+                everydropdown.addEventListener('hidden.bs.dropdown', function() {
+                    // after dropdown is hidden, then find all submenus
+                    this.querySelectorAll('.submenu').forEach(function(everysubmenu) {
+                        // hide every submenu as well
+                        everysubmenu.style.display = 'none';
+                    });
+                })
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    let nextEl = this.nextElementSibling;
+                    if (nextEl && nextEl.classList.contains('submenu')) {
+                        // prevent opening link if link needs to open dropdown
+                        e.preventDefault();
+                        if (nextEl.style.display == 'block') {
+                            nextEl.style.display = 'none';
+                        } else {
+                            nextEl.style.display = 'block';
+                        }
+
+                    }
+                });
+            })
+        }
+        // end if innerWidth
+    });
+    // DOMContentLoaded  end
+    // ______________________________________________________________________________
+    document.addEventListener("DOMContentLoaded", function() {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.getElementById('navbar_top').classList.add('fixed-top');
+                // add padding top to show content behind navbar
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+            } else {
+                document.getElementById('navbar_top').classList.remove('fixed-top');
+                // remove padding top from body
+                document.body.style.paddingTop = '0';
+            }
+        });
+    });
+    // ____________________________________________________________________
+
+    $(document).ready(function() {
+        $(".dropdown").hover(
+            function() {
+                $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
+                $(this).toggleClass('open');
+            },
+            function() {
+                $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+        // -----------------------------------------------------------------------
+            // const body = document.body;
+            // const btn = document.querySelectorAll('.button')[0];
+
+            // btn.addEventListener('mouseenter', () => {
+            //   body.classList.add('show');
+            // });
+
+            // btn.addEventListener('mouseleave', () => {
+            //   body.classList.remove('show');
+            // });
+        // ***************************************************************************
+        // ===========================================================================
+            /*
+                <!--function myFunction() {-->
+                <!--   var search = $("#myInput");-->
+                <!--   var items  = $(".fbbox");-->
+                <!--&lt;!&ndash;   $("#sea_rch").on("click", function(e){&ndash;&gt;-->
+                <!--        var v = search.val().toLowerCase();-->
+                <!--       if(v == "") {-->
+                <!--           items.show();-->
+                <!--           return;-->
+                <!--       }-->
+                <!--        $.each(items, function(){-->
+                <!--            var it = $(this);-->
+                <!--            var lb = it.find("h5").text().toLowerCase();-->
+                <!--            console.log( lb + " -&#45;&#45; " + v);-->
+                <!--            if(lb.indexOf(v) == -1)-->
+                <!--                { it.hide(); }-->
+                <!--            else-->
+                <!--                { it.show(); }-->
+                <!--        });-->
+                <!--&lt;!&ndash;    });&ndash;&gt;-->
+                <!--};-->
+            */
+
+        // Find out the cart items from localStorage
+        if (localStorage.getItem('cart') == null) {
+            var cart = {};
+        } else {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            updateCart(cart);
+        }
+        // If the add to cart button is clicked, add/increment the item
+        //$('.cart').click(function() {
+
+        $('.divpr').on('click', 'button.cart', function() {
+            var idstr = this.id.toString();
+            if (cart[idstr] != undefined) {
+                qty = cart[idstr][0] + 1;
+
+            } else {
+                qty = 1;
+                name = document.getElementById('name'+idstr).innerHTML
+                price = document.getElementById('price'+idstr).innerHTML
+                cart[idstr] = [qty, name,parseInt(price)];
+            }
+            updateCart(cart);
+        });
+        //Add Popover to cart
+        $('#popcart').popover();
+        updatePopover(cart);
+
+        function updatePopover(cart) {
+            //console.log('We are inside updatePopover');
+            var popStr = "";
+        //----------------------------------------------------------------------------------------------
+            popStr = popStr + "<p> To Hide Click On Cart Icon: </p>";
+        //=========================================================================================
+            popStr = popStr+ 
+                "<table class='table'><thead>"+
+                "<tr><td>ITEM ID</td><td>ITEM NAME</td><td>QUANTITY</td></tr>"+
+                "</thead>";
+            var i = 1;
+            for (var item in cart) 
+                {
+                    popStr = popStr + "<tbody <tr>"+ "<td><b>"+i+"</b>.</td>";
+                    popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>"+ 
+                    "<td>" + cart[item][0] + "</td>";
+                    i = i + 1;
+                }
+            popStr = popStr + "</tr> </tbody>";
+            popStr = popStr +
+            "<div class='bg-'>"+
+                "<a class='btn btn-sm btn-secondary m-2' id ='checkout'  href='/shop/cheakout'>Checkout</a>"+ 
+                "<a class='btn btn-sm btn-danger m-2 float-right'    id ='clearCart' onclick='clearCart()'>Clear Cart</a>"+
+            "<div>";
+            //console.log(popStr);
+            document.getElementById('popcart').setAttribute('data-content', popStr);
+            $('#popcart').popover('show');
+        }
+
+        function clearCart() {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            for (var item in cart) {
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-sm  cart">Add To Cart </button>'
+
+            }
+            localStorage.clear();
+            cart = {};
+            updateCart(cart);
+
+        }
+
+        function updateCart(cart) {
+
+            var sum = 0;
+            for (var item in cart) {
+                sum = sum + cart[item][0];
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-sm btn-dark minus'>-</button> <span class='text-danger' id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-sm btn-dark plus'> + </button>";
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('cart').innerHTML = sum;
+            console.log(cart);
+            updatePopover(cart);
+        }
+        // If plus or minus button is clicked, change the cart as well as the display value
+        $('.divpr').on("click", "button.minus", function() {
+            a = this.id.slice(7, );
+            cart['pr' + a][0] = cart['pr' + a][0] - 1;
+            cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        //<!--    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];-->
+            if (cart['pr'+ a][0]==0){
+                document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="btn btn-sm  cart">Add To Cart</button>';
+                delete cart['pr'+a];
+            }
+            else{
+                document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+            }
+
+            updateCart(cart);
+        });
+        $('.divpr').on("click", "button.plus", function() {
+            a = this.id.slice(6, );
+            cart['pr' + a][0] = cart['pr' + a][0] + 1;
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+            updateCart(cart);
+        });
+</script>
+{% endblock %}
