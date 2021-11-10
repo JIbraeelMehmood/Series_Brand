@@ -1,7 +1,7 @@
 #=====================================================================
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
-from .models import product,contect_form,orders,order_update,Review,Comment
+from .models import product,products_attribute,contect_form,orders,order_update,Review,Comment
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate,  login, logout
 from math import ceil
@@ -45,11 +45,15 @@ def about(request):
 
 #-----------------------------------------------------------------------------------------
 
-
 #=============================================================================
 def index(request):
     products= product.objects.all()
     allProds=[]
+#-----------------------------------------------------------------------------------------
+    #related_products = product.objects.filter(category = product_cat.category).exclude(id = myid)[:4]
+	#product_attribute = products_attribute.objects.filter(product = products.product_name).order_by('date')
+    #attribute = products_attribute.objects.get(product = products.category)
+#-----------------------------------------------------------------------------------------
     catprods= product.objects.values('category', 'id')
     cats= {item["category"] for item in catprods}
     for cat in cats:
@@ -324,6 +328,8 @@ def product_fn(request,myid):
     reviews_avg = reviews.aggregate(Avg('rate'))
     reviews_count = reviews.count()
     # ,{'products':products[0]}
+    product_cat= product.objects.get(id = myid)
+    related_products = product.objects.filter(category = product_cat.category).exclude(id = myid)[:4]
     context = {
         'for_rate_products': products,
         'reviews': reviews,
@@ -331,6 +337,7 @@ def product_fn(request,myid):
         'reviews_avg': reviews_avg,
         'reviews_count': reviews_count,
         # 'our_db': our_db,
+        'related_cat': related_products,
     }
     template = loader.get_template('shop/BASIC_product page.html')
     return HttpResponse(template.render(context, request))

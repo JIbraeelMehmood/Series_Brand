@@ -21,6 +21,26 @@ class product(models.Model):
             return self.product_name
 
 
+class color(models.Model):
+        color_name = models.CharField(max_length=50)
+        color_code = models.CharField(max_length=100)
+        def __str__(self):
+            return self.color_name 
+        
+
+
+class size(models.Model):
+        size_attribute = models.CharField(max_length=50)
+        def __str__(self):
+            return self.size_attribute 
+
+class products_attribute(models.Model):
+        product = models.ForeignKey(product,on_delete=models.CASCADE,default=None)
+        color = models.ForeignKey(color,on_delete=models.CASCADE,default=None)
+        size = models.ForeignKey(size,on_delete=models.CASCADE,default=None)
+        price = models.PositiveIntegerField()
+        def __str__(self):
+            return self.product.product_name 
 
 class contect_form(models.Model):
         contect_id=models.AutoField(primary_key=True)

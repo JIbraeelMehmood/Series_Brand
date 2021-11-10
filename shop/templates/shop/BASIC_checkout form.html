@@ -1,18 +1,18 @@
 {% extends 'shop/basic_page.html' %}
-{% block title%} Checkout - My Awesome Cart{% endblock %}
+{% block title%} Checkout {% endblock %}
 {% block body %}
 <div class="container">
     <div class="col my-4">
-        <h2>Step 1 - My Awesome Cart Express Checkout - Review Your Cart Items</h2>
+        <h2>Step 1 - t Express Checkout - Review Your Cart Items</h2>
         <div class="my-4">
 
-            <ul class="list-group" id="items">
+            <ul class="list-group "  id="items">
             </ul>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mt-3">
                     <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is
-                        <b>Rs.<span id="totalprice"></span></b>
-                        </span>Enter your details below & place your order. Thanks for using My Awesome Cart!</li>
+                        <b>Rs.<span  class="text-dark font-weight-bold m-2"  id="totalprice"></span></b>
+                        </span>Enter your details below & place your order. Thanks for using Series!</li>
                 </ol>
             </nav>
         </div>
@@ -98,15 +98,6 @@
 })()
 
 
-
-
-
-
-
-
-
-
-
 if (localStorage.getItem('cart') == null) {
     var cart = {};
 } else {
@@ -130,7 +121,7 @@ if ($.isEmptyObject(cart)) {
          totalPrice = totalPrice + qty * itemPrice
         mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                     ${name}
-                    <span  class="badge badge-danger badge-pill">${qty}</span>
+                    <span  class="font-weight-bold m-2 badge badge-danger badge-pill text-dark">${qty}</span>
                 </li>`
         $('#items').append(mystr);
     }

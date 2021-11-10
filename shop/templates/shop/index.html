@@ -5,14 +5,14 @@
 .col-md-3
 {
 display: inline-block;
-margin-left:100px;
+margin-left:65px;
 }
 .carousel-indicators .active {
 background-color: blue;
 }
 .col-md-3 img{
-width: 300px;
-height: 200px;
+width: 250px;
+height: 100px;
 }
 body .carousel-indicator li{
 background-color: blue;
@@ -223,18 +223,22 @@ main[role="main"] {
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-.product .product-sidebar button.colors .color.black {
-    background: #000;
-    border-bottom: 2px solid #555;
-}
-.product .product-sidebar button.colors .color.white {
-    background: #fff;
-    border-bottom: 2px solid #e5e5e5;
-}
-.product .product-sidebar button.colors .color.red {
-    background: #ea1535;
-    border-bottom: 2px solid #ef566d;
-}
+
+
+/*
+    .product .product-sidebar button.colors .color.black {
+        background: #000;
+        border-bottom: 2px solid #555;
+    }
+    .product .product-sidebar button.colors .color.white {
+        background: #fff;
+        border-bottom: 2px solid #e5e5e5;
+    }
+    .product .product-sidebar button.colors .color.red {
+        background: #ea1535;
+        border-bottom: 2px solid #ef566d;
+    }
+*/
 .product .product-sidebar button.colors .color:hover {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
     filter: alpha(opacity=100);
@@ -270,7 +274,10 @@ main[role="main"] {
     opacity: 1;
 }
 .product:hover .product-sidebar {
-    right: -50px;
+    /* right: -50px;*/
+    /* left: 0px;*/
+    z-index: 1;
+    right: 0px;
 }
 
 
@@ -357,7 +364,7 @@ main[role="main"] {
                         {% for i in product %}
                         <div class="col-xs-2 col-sm-2 col-md-3">
                             <div class="card-block ">
-                                <div class="card-body  ">
+                                <div class="card-body p-4 ">
                                     <!-- __________________________________________________________________________________________ -->
                                     <main role="main" class="bg-">
                                         <div class="product">
@@ -367,41 +374,97 @@ main[role="main"] {
                                                 -->
                                                     <div class="zoom-effect-container">
                                                     <div class="card-hover">
-                                                        <a href="/shop/productview/{{i.id}}" class="text-decoration-none"  style="vertical-align:middle" id="qv{{i.id}}">
-                                                            <img src="/media/{{i.image}}" alt="Product Image" class="product-image">
-                                                        </a>
+                                                        <!-- <a href="/shop/productview/{{i.id}}" class="text-decoration-none"  style="vertical-align:middle" id="qv{{i.id}}">
+                                                        </a> -->
+                                                        <img src="/media/{{i.image}}" alt="Product Image" class="product-image">
                                                     </div>
                                             </figure>
                                             <div class="product-description">
-                                            <div class="info">
-                                                <h1 id="namepr{{i.id}}">{{i.product_name}}</h1>
-                                                <p class="card-text">
-                                                {{i.product_descri|slice:"0:25"}}...
-                                                </p>
-                                            </div>
-                                            <div class="price" id="pricepr{{i.id}}">
-                                                {{i.price}}
-                                            </div>
+                                                <div class="info">
+                                                   <!--  {{i.products_attribute_set.first}} --> 
+                                                    <h1 id="namepr{{i.id}}">{{i.product_name}}</h1>
+                                                   
+                                                    <p class="card-text">
+                                                    {{i.product_descri|slice:"0:25"}}...
+                                                    </p>
+                                                </div>
+                                                <!--<div class="price setprice" id="pricepr{{i.id}}">
+                                                    {{i.price}}  <input id="pricepr{{i.id}}" class="setprice"/>
+                                                </div> -->
+                                                <div class="price" id="product_size_{{i.id}}">
+                                                    {{i.products_attribute_set.first.price}}
+                                                </div>
+                                                <span  class=" text-light setcolor " id="product_color_{{i.id}}" style=" border:1px solid black; padding: 5px; background-color: {{i.products_attribute_set.first.color}} ;" >
+                                                    {{i.products_attribute_set.first.color}}
+                                                </span>
+
+                                                <!--
+                                                   {% if user.is_authenticated %}
+                                                    <div class="button  w-50 float-right " >
+                                                        <span id="divpr{{i.id}}" class="shift divpr">
+                                                                <button id="pr{{i.id}}" class="btn btn-sm  cart">Add To Cart</button>
+                                                        </span>
+                                                        <div  class="mask"></div>
+                                                    </div>
+                                                    {% endif %}
+                                               -->
+                                               <!--
+                                                   <span id="divpr{{i.id}}" class="divpr">
+                                                        <h5 class="card-title" > <span style="color:red" id="pricepr{{i.id}}">{{i.price}} Rs</span></h5>
+                                                        {% if user.is_authenticated %}
+                                                        <button id="pr{{i.id}}" class="btn btn-success cart">Add To Cart</button>
+                                                        {% endif %}
+                                                    </span>
+                                                -->
                                             </div>
                                             <div class="product-sidebar">
-                                            <button class="buy">
-                                                <span>BUY ITEM</span>
-                                            </button>
+                                                 <span id="divpr{{i.id}}" class="divpr ">
+                                                    <span style="color:red;display: none; " class="product_price_{{i.id}}"  id="pricepr{{i.id}}">
+                                                     {{i.products_attribute_set.first.price}}
+                                                    </span>
+                                                    <h1 style="color:red;display: none; "  class="product_size_{{i.id}}"  id="sizepr{{i.id}}">{{i.products_attribute_set.first.size}}</h1>
+                                                    <h1 style="color:red;display: none; "  class="product_color_{{i.id}}"  id="colorpr{{i.id}}">{{i.products_attribute_set.first.color}}</h1>
+
+                                                    {% if user.is_authenticated %}
+                                                    <button id="pr{{i.id}}" class="buy cart">
+                                                        <span>BUY ITEM</span>                    
+                                                    </button>
+                                                    {% endif %}
+                                                </span>
+
                                             <button class="info">
-                                                <span>MORE INFO</span>
-                                            </button>
-                                    
-                                            <button class="size">
-                                                <span>SIZES</span>
-                                            </button>
-                                    
-                                            <button class="colors">
                                                 <span>
-                                                <a href="" class="color black"></a>
-                                                <a href="" class="color white"></a>
-                                                <a href="" class="color red"></a>
+                                                    <a href="/shop/productview/{{i.id}}" class="text-light"  style="vertical-align:middle" id="qv{{i.id}}">
+                                                        MORE INFO
+                                                    </a>
                                                 </span>
                                             </button>
+                                            {% if i.products_attribute_set.first.color %}
+                                            <button class="size">
+                                                <span>
+                                                    {% for vari_obj in i.products_attribute_set.all %} 
+                                                        <a style=" font-weight: 600;  font-size: 15px;" product_size_id="{{i.id}}"  size_price="{{vari_obj.price}}"  size="{{vari_obj.size}}" onclick="FunctionSize(this)" > {{vari_obj.size}}  </a>
+                                                    {% endfor %} 
+                                                </span>
+                                            </button>
+                                            {% endif %}
+
+                                            {% if i.products_attribute_set.first.color %}
+                                            <button class="colors">
+                                                <span>
+                                                {% for vari_obj in i.products_attribute_set.all %} 
+                                                    <span href="" class="color " product_color_id="{{i.id}}" color="{{vari_obj.color}}" onclick="FunctionColor(this)"  style="background-color:{{vari_obj.color}};"> 
+                                                    </span>
+                                                {% endfor %} 
+                                                    <!--
+                                                        <a href="" class="color " style="background-color:{{i.products_attribute_set.first.color}};"> 
+                                                            {{i.products_attribute_set.first.color}}
+                                                        </a>
+                                                    -->
+                                                </span>
+                                            </button>
+                                            {% endif %}
+
                                             </div>
                                         </div>
                                     </main>
@@ -409,7 +472,7 @@ main[role="main"] {
                                 </div>
                             </div>
                         </div>
-                        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
                     </div>
                     <div class="carousel-item">
                         {% endif %}
@@ -435,10 +498,10 @@ main[role="main"] {
           <section class="details-card" style="background-color:white;">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- width: 100px; height:500px style="background-color:sandybrown;"  -->
+                    <!-- width: 100px; height:500px style="background-color:sandybrown;" stretched-link  -->
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                        <a class="card-block stretched-link text-decoration-none" href>
+                        <a class="card-block    text-decoration-none" href>
                             <div class="card text-center">
                                 <div class="card-content">
                                     <div class="card-img">
@@ -455,7 +518,7 @@ main[role="main"] {
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                        <a class="card-block stretched-link text-decoration-none" href>
+                        <a class="card-block    text-decoration-none" href>
                             <div class="card text-center">
                                 <div class="card-content">
                                     <div class="card-img">
@@ -469,8 +532,9 @@ main[role="main"] {
                             </div>
                         </a>
                     </div>
+                    
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                        <a class="card-block stretched-link text-decoration-none" href>
+                        <a class="card-block    text-decoration-none" href>
                             <div class="card text-center">
                                 <div class="card-content">
                                     <div class="card-img">
@@ -619,6 +683,46 @@ main[role="main"] {
                 <!--};-->
             */
 
+  
+
+    function FunctionColor(e) 
+    {
+        //var oldPrice = $('.setprice').val();
+        //alert ("old -> "+oldPrice);
+        var fetchColor = e.getAttribute("color");
+        var fetchID = e.getAttribute("product_color_id");
+        product = document.getElementById('product_color_'+fetchID)
+        dynamiccolor = document.getElementsByClassName('product_color_'+fetchID)
+        //alert ("PRODUCT -> "+product);
+        //alert ("variantePrice -> "+fetchPrice);
+        //var setprice =  $('.setprice').val(fetchPrice);
+        //var setcolor = $(".setcolor").html(fetchColor);
+        //alert ("color -> "+fetchColor+"| size -> "+fetchSize+"| size_price -> "+fetchPrice);
+        //var newPrice = $('.setprice').val();
+        //alert ("newPrice -> "+newPrice);
+        //var fetchcolorID = $(".setcolor").attr("id");
+        //alert ("PRODUCT color id -> "+fetchcolorID);
+        var setcolor = $(product).html(fetchColor);
+        var setbackground = $(product).css({"background-color": fetchColor});
+        var setcolor = $(dynamiccolor).html(fetchColor);
+
+    }
+
+    function FunctionSize(e) 
+    {
+        var fetchPrice = e.getAttribute("size_price");
+        var fetchSize = e.getAttribute("size");
+        var fetchID = e.getAttribute("product_size_id");
+        //alert ("PRODUCT ID-> "+fetchID);
+        product = document.getElementById('product_size_'+fetchID)
+        dynamicprice = document.getElementsByClassName('product_price_'+fetchID)
+        dynamicsize = document.getElementsByClassName('product_size_'+fetchID)
+        //alert ("dynamic ID -> "+dynamicprice);
+        var setprice = $(product).html(fetchPrice);
+        var setsize = $(dynamicsize).html(fetchSize);
+        var setsizeprice = $(dynamicprice).html(fetchPrice);
+    }
+
         // Find out the cart items from localStorage
         if (localStorage.getItem('cart') == null) {
             var cart = {};
@@ -632,13 +736,31 @@ main[role="main"] {
         $('.divpr').on('click', 'button.cart', function() {
             var idstr = this.id.toString();
             if (cart[idstr] != undefined) {
+                //=========================================================
+                //price = document.getElementById('price'+idstr).innerHTM
+                //size = document.getElementsByClassName('setsize').innerHTML
+                //color = document.getElementsByClassName('setcolor').innerHTML
+                //=========================================================
                 qty = cart[idstr][0] + 1;
+                //oldprice = document.getElementById('price'+idstr).innerHTML
+                //price = cart[idstr][2] = oldprice ;
 
             } else {
                 qty = 1;
                 name = document.getElementById('name'+idstr).innerHTML
                 price = document.getElementById('price'+idstr).innerHTML
-                cart[idstr] = [qty, name,parseInt(price)];
+                size = document.getElementById('size'+idstr).innerHTML
+                color = document.getElementById('color'+idstr).innerHTML
+                //=========================================================
+                //size = document.getElementsByClassName('setsize').innerHTML
+                //color = document.getElementsByClassName('setcolor').innerHTML
+                //=========================================================
+                //console.log(qty);
+                //console.log(name);
+                //console.log(price);
+                //console.log(size);
+                //console.log(color);
+                cart[idstr] = [qty, name,parseInt(price),size,color];
             }
             updateCart(cart);
         });
@@ -654,13 +776,15 @@ main[role="main"] {
         //=========================================================================================
             popStr = popStr+ 
                 "<table class='table'><thead>"+
-                "<tr><td>ITEM ID</td><td>ITEM NAME</td><td>QUANTITY</td></tr>"+
+                "<tr><td>ITEM</td><td>NAME</td><td>VARIANTS</td><td>QTY</td></tr>"+
                 "</thead>";
             var i = 1;
-            for (var item in cart) 
+            for (var item in cart)   
                 {
                     popStr = popStr + "<tbody <tr>"+ "<td><b>"+i+"</b>.</td>";
-                    popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>"+ 
+                    popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>"+
+                    //"<td> "+size+" "+color +"</td>"+
+                    "<td> "+ " " +"</td>"+
                     "<td>" + cart[item][0] + "</td>";
                     i = i + 1;
                 }
@@ -676,9 +800,9 @@ main[role="main"] {
         }
 
         function clearCart() {
-            cart = JSON.parse(localStorage.getItem('cart'));
+            cart = JSON.parse(localStorage.getItem('cart')); 
             for (var item in cart) {
-                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-sm  cart">Add To Cart </button>'
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class=" cart buy"><span>BUY ITEM</span> </button>'
 
             }
             localStorage.clear();
@@ -692,7 +816,7 @@ main[role="main"] {
             var sum = 0;
             for (var item in cart) {
                 sum = sum + cart[item][0];
-                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-sm btn-dark minus'>-</button> <span class='text-danger' id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-sm btn-dark plus'> + </button>";
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-sm btn-dark minus'>-</button> <span class='text-light ml-3' id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-sm btn-dark plus'> + </button>";
             }
             localStorage.setItem('cart', JSON.stringify(cart));
             document.getElementById('cart').innerHTML = sum;
@@ -706,7 +830,7 @@ main[role="main"] {
             cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
         //<!--    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];-->
             if (cart['pr'+ a][0]==0){
-                document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="btn btn-sm  cart">Add To Cart</button>';
+                document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="cart buy"><span>BUY ITEM</span></button>';
                 delete cart['pr'+a];
             }
             else{
