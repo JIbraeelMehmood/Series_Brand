@@ -162,28 +162,32 @@ opacity:1;
 
 {% block body %}
 <!--______________________________________________-->
-        <h2 style=" margin:20px 30px">Search results : </h2>
+        <h2 style=" margin:20px 30px">Filter results : </h2>
     {% if allPosts|length < 1 %}
-            <p>No Product Results</p>
+        <p>No Product Results</p>
     {% endif %}
 
-<div class="container" style=" margin-top:40px;">
-    <div class="center">
+      <div class="container" style=" margin-top:40px;">
+        <div class="center">
             {% for post in allPosts  %}
           <div class="property-card">
-
             <a href="/shop/productview/{{post.id}}">
               <div class="property-image">
                     <div class="property-image-title">
-                 <h5>{{post.category}}</h5>
+                <!-- <h5>{post.category}</h5 >--> 
+                  <h6 > Preview </h6>
                 </div>
                   <img src='/media/{{post.image}}' class="card-img-top" alt="...">
 
               </div></a>
             <div class="property-description">
-              <h4>  {{post.product_name}} </h4>
-              <p> {{post.product_descri|slice:"0:53"}}...</p>
-              <p>  {{post.price}}.Rs</p>
+              <br>
+              <br>
+              <br>
+              <h4 style="">{{post.product_name}} </h4>
+              <p style="font-size: 16px;"> {{post.product_descri|slice:"0:53"}}...</p>
+              <p style="font-size: 15px;"> {{post.price}}.Rs</p>
+
             </div>
             <a href="#">
               <div class="property-social-icons">
@@ -193,7 +197,7 @@ opacity:1;
           </div>
               {% endfor %}
         </div>
-</div>
+      </div>
 
 <!-------------------------->
 

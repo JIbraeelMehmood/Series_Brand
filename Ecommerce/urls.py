@@ -24,10 +24,12 @@ from . import views
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('shop/', include('shop.urls')),
-                  #path('blog/', include('A_blog.urls')),
+                  path('blog/', include('blog.urls')),
                   path('', views.index, name="home_index"),
                   path('accounts/', include('allauth.urls')),
-                  # path('social-auth/', include('social_django.urls', namespace="social")),
-                  path('', TemplateView.as_view(template_name="blog/social_login.html")),
+
+                  path('', include('maps.urls')),
+                  # path('social-auth/', include('social_djan   go.urls', namespace="social")),
+                  #path('', TemplateView.as_view(template_name="blog/social_login.html")),
                   # path('account/', TemplateView.as_view(template_name="login.html")),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

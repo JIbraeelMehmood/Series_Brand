@@ -39,6 +39,10 @@ INSTALLED_APPS = [
 #------------------------------------------------
 # 'shop',
     'shop.apps.ShopConfig',
+# 'blog',
+    'blog.apps.BlogConfig',
+# 'map',
+    'maps.apps.MapsConfig',
 #----------------------------------------------
 
     'django.contrib.admin',
@@ -49,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 #------------------------------------------------
+    'django_filters',
+
 # <-- Here
     'django.contrib.sites',
     # 'star_ratings',
@@ -71,11 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'social_django.middleware.SocialAuthExceptionMiddleware',  # <-- Here
-
-
-
 ]
 
 ROOT_URLCONF = 'Ecommerce.urls'
@@ -108,13 +110,15 @@ AUTHENTICATION_BACKENDS = [
 #   'social_core.backends.github.GithubOAuth2',
 ]
 
-SITE_ID = 2
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
-LOGIN_REDIRECT_URL = '/'
+SITE_ID = 1
+ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/   accounts/google/login/home'
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
-SOCIAL_AUTH_FACEBOOK_KEY = ''  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = ''  # App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '3755034'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '7bc86b7f'  # App Secret
 #-----------------------------------------------------
 
 WSGI_APPLICATION = 'Ecommerce.wsgi.application'
@@ -177,7 +181,7 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'junaidmeh4@gmail.com'
+EMAIL_HOST_USER = '410@gmail.com'
 EMAIL_HOST_PASSWORD = 'daut'
 EMAIL_USE_TLS = True
 #---------------------------------------------------

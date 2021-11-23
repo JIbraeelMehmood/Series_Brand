@@ -17,8 +17,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!--  Font Awesome  -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+ 
       <title>{% block title%} {% endblock %}</title>
   <!--<style></style>-->
       <style>
@@ -194,8 +193,8 @@
             text-align: center;
             margin: 40px;
             font-size: 22px;
-            font-family: Tiemann, serif"
-
+             /* font-family: Tiemann, serif" */
+             font-family: serif"
         }
         
         .sta-2 {
@@ -204,7 +203,8 @@
             padding-bottom: 50px;
             padding-left: 100px;
             padding-right: 100px;
-            font-family: Tiemann, serif"
+             /* font-family: Tiemann, serif" */
+            font-family: serif"
 
         }
         
@@ -216,7 +216,7 @@
         /* _____________________________________________STA-1-2 END________________________________ */
         
         .big-img {
-            position: relative;
+            /*position: relative;*/
             width: 100%;
         }
         
@@ -227,7 +227,8 @@
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             color: white;
-            padding: 10px 20px 15px 20px;
+            font-weight: 800px;
+            padding: 15px 20px 35px 20px;
             /* border: none; */
             cursor: pointer;
             /* border-radius: 5px; */
@@ -237,22 +238,25 @@
             font-size: 15px;
             border: 3px solid white;
         }
-        
         .big-img h3 {
-            color: white;
             position: absolute;
-            top: 38%;
-            left: 28%;
-            font-size: 36px;
-            padding: 12px 24px;
+            top: 45%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            color: white;
+            padding: 10px 20px 15px 20px;
+            /* border: none; */
+            cursor: pointer;
+            /* border-radius: 5px; */
             text-align: center;
-            width: 350px;
-            height: 50px;
+            width: auto;
+            font-size: 35px;
         }
         
         .big-img img {
             width: 100%;
-            height: auto;
+            height: 900px;
             cursor: pointer;
         }
         /*_________________________________________BIG IMAGES_________________________________________________________ */
@@ -428,45 +432,52 @@
             margin-top: 80px;
         }
         
-        .btn-location button {
+        .btn-location a {
             position: absolute;
             top: 50%;
             left: 50%;
+            /*left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;*/
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             background-color: wheat;
             color: black;
             font-size: 16px;
             padding: 12px 24px;
-            border: none;
             cursor: pointer;
             border-radius: 5px;
-            text-align: center;
-            width: 250px;
+            width: 150px;
             height: 50px;
         }
         
-        .btn-location h3 {
-            color: wheat;
+        /*.btn-location h3 {
+            color: whitesmoke;
+            font-weight: 600;
             position: absolute;
-            top: 20%;
-            left: 35%;
-            /* font-size: 16px; */
+            top: 10%;
+            left: 50%;
             padding: 12px 24px;
-            text-align: center;
-            width: 350px;
+            width: 200px;
             height: 50px;
-        }
+            text-align: center;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);  
+        }*/
         
         .btn-location img {
             width: 100%;
-            height: auto;
         }
         
-        .btn-location button:hover {
+        .btn-location a:hover {
             background-color: gray;
             color: white;
         }
+        /*
+        .btn-location h3:hover {
+            color: black;
+        }*/
         /* ____________________________________Location BTN_END________________________________________________________ */
         
         .sidenav {
@@ -480,12 +491,17 @@
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
+            /* offset-x | offset-y | blur-radius | spread-radius | color */
+            -webkit-box-shadow: -2px -1px 15px 7px rgba(0,0,0,0.5);
+            -moz-box-shadow: -3px -2px 30px 14px rgba(0,0,0,0.425);
+            box-shadow: -4px -3px 20px 10px rgba(0,0,0,0.35);
+
         }
         
         .sidenav a {
-            padding: 8px 8px 8px 32px;
+            padding: 5px 5px 5px 0px;
             text-decoration: none;
-            font-size: 25px;
+            font-size: 15px;
             color: #818181;
             display: block;
             transition: 0.3s;
@@ -505,10 +521,10 @@
         
         @media screen and (max-height: 450px) {
             .sidenav {
-                padding-top: 15px;
+                padding-top: 10px;
             }
             .sidenav a {
-                font-size: 18px;
+                font-size: 12px;
             }
         }
         /* _____________________________________CART SIDE BAR_________________________________________________________ */
@@ -751,17 +767,18 @@
             font-family: Futura;
         }
         /* _________________________________________________LOGIN END____________________________________________________ */
-        *{
-          font-family:Tiemann,serif;
+       
+        /*  *{
+            font-family:Tiemann,serif;
+            }
+            @font-face {
+              font-family: Tiemann;
+              font-weight: 400;
+              font-style: normal;
+              font-display: swap;
+              src: url("https://fonts.shopifycdn.com/tiemann/tiemann_n4.5b52e2bce962763887021fba63a434499fd58ec1.woff2?h1=bmlzaGF0bGluZW4uY29t&hmac=772cfda70e738b99c647483a6c33b12cdde3d3eac73565e21aaac08ce0ff0df0") format("woff2"), url("https://fonts.shopifycdn.com/tiemann/tiemann_n4.45d9bd10a82b6ecfcb090ac3403c779194d6e014.woff?h1=bmlzaGF0bGluZW4uY29t&hmac=eb8f3c8cad5b11c24f1d9f123b39d669cb844cf66b0f990bf749d676229b5b77") format("woff");
           }
-          @font-face {
-            font-family: Tiemann;
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-            src: url("https://fonts.shopifycdn.com/tiemann/tiemann_n4.5b52e2bce962763887021fba63a434499fd58ec1.woff2?h1=bmlzaGF0bGluZW4uY29t&hmac=772cfda70e738b99c647483a6c33b12cdde3d3eac73565e21aaac08ce0ff0df0") format("woff2"), url("https://fonts.shopifycdn.com/tiemann/tiemann_n4.45d9bd10a82b6ecfcb090ac3403c779194d6e014.woff?h1=bmlzaGF0bGluZW4uY29t&hmac=eb8f3c8cad5b11c24f1d9f123b39d669cb844cf66b0f990bf749d676229b5b77") format("woff");
-        }
-        
+        */  
         @font-face {
             font-family: Futura;
             font-weight: 400;
@@ -793,9 +810,16 @@
             font-display: swap;
             src: url("https://fonts.shopifycdn.com/futura/futura_o6.2978dbd38bd9b3e8b72ee3299cd940da2900eb72.woff2?h1=bmlzaGF0bGluZW4uY29t&hmac=7b9d98afa743ed36e666fbf97a92b6bf0a4327be0ab49821089245bff8033e4c") format("woff2"), url("https://fonts.shopifycdn.com/futura/futura_o6.bbc5bc6e7a675b3182e4866da9f9643bb3821261.woff?h1=bmlzaGF0bGluZW4uY29t&hmac=f62237fc19e52973a20f085c597f2860bf14ec8de144596498a64252180a9ee7") format("woff");
         }
-        
+        /* -----------------------------------  */
+        /*.gmap3{
+                margin: 20px auto;
+                border: 1px dashed #C0C0C0;
+                width: 500px;
+                height: 500px;
+              }*/
       </style>
 </head>
+<!-- <body  onLoad="initialize()"> -->
 <body>
   <div class="container-fluid">
   <!-- *********************************************************************************************************************** -->
@@ -805,7 +829,7 @@
                           <div class="div-center ">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <div style="text-align: center;font-family:Tiemann,serif">
+                                <div style="text-align: center;font-family:serif">
                                   <h3 style="margin: 50px 0px 30px 0px;">CREATE ACCOUNT</h3>
                                 </div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -865,7 +889,7 @@
                           <div class="div-center">
                             <div class="modal-content ">
                               <div class="modal-header">
-                                <div class="" style="text-align: center; font-family:Tiemann,serif">
+                                <div class="" style="text-align: center; font-family:serif">
                                   <h3 style="margin: 50px 0px 40px 0px;">LOGIN</h3>
                                 </div>
                                 <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
@@ -986,20 +1010,23 @@
                   </div>
                   <!-- --------------------------------------------------------------------------------------- -->
                   <div class="p-2 bd-highlight">
-                    <a href="index.html" style="font-size: 20px;">
+                    <a href="/shop" style="font-size: 20px;">
                       <span style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size:larger">ZEEV</span> STORE
                     </a>
                   </div>
                   <div class="p-2 bd-highlight">
                       <!-- ****************************************************-->
                       {% if user.is_authenticated %}
-                        <a  class="btn btn-sm  mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." > 
-                          <!-- onclick="openNav()"   --> 
-                          <i style="cursor:pointer;"  class="fas fa-shopping-cart">
-                            Cart(<span id="cart">0</span>)
-                          </i>
-                          <!-- <img  width="30px" height="35px"  src="\media\A_shop\images\basket-removebg-preview.png"> -->
-                        </a>
+                        <!-- 
+                          <a  class="btn btn-sm  mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." > 
+                        -->
+                            <!-- onclick="openNav()"   --> 
+                          <a  class="btn btn-sm  mx-2"  onclick="openNav()"   class="btn btn-sm  mx-2"  > 
+                            <i style="cursor:pointer;"  class="fas fa-shopping-cart">
+                              Cart(<span id="cart">0</span>)
+                            </i>
+                            <!-- <img  width="30px" height="35px"  src="\media\A_shop\images\basket-removebg-preview.png"> -->
+                          </a>
                           <a href="" type="button" class="btn  mr-2  stylebtn"  > 
                             <i class="fas fa-user">
                              {{request.user}}
@@ -1015,27 +1042,40 @@
                             <i class="fas fa-user"></i>
                           </a>
                       {% endif %}
-                    <!--
-                      <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <h1>Cart</h1>
-                        <table class="table" >
-                        </table>
-                     </div>
+                      
+                        <div id="mySidenav" class="sidenav">
+                          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                          <div class="row mb-3" style="justify-content: center;" id="ItemsHandler">
+                            <a class='btn btn-sm text-dark btn-light  col-4' id ='checkout'  href='/shop/cheakout'>Checkout</a>
+                            <a class='btn btn-sm btn-dark col-4 ' id ='clearCart' onclick='clearCart()'>Clear Cart</a>
+                          </div>
+                            <table class="table bg-light m-1" >
+                              <thead class="table bg-dark text-light">
+                                <tr>
+                                  <td>ITEM</td>
+                                  <td>NAME</td>
+                                  <td>Size VARIANTS</td>
+                                  <td>Color VARIANTS</td>
+                                  <td>QTY</td>
+                                </tr>
+                                </thead>
+                                <tbody id="ProductItems">
+                                </tbody>
+                            </table>
+                        </div>
                                 <script>
                                     function openNav() {
-                                        document.getElementById("mySidenav").style.width = "650px";
+                                        document.getElementById("mySidenav").style.width = "450px";
                                     }
 
                                     function closeNav() {
                                         document.getElementById("mySidenav").style.width = "0";
                                     }
                                 </script>
-                    -->
                   </div>
                 </div>
                 <div class="container-fluid">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation" style="background-color:wheet;">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation" style="background-color:wheet;">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="main_nav" style="background-color:wheet;justify-content: center; ">
@@ -1274,16 +1314,20 @@
       <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         {% block body %}  {% endblock body %}
       <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
             <!-- ======================================================================================================= -->
-            <div class="btn-location">
+             <div class="btn-location">
               <img src="/media/A_shop/assests/theme-image17.jpg" alt="">
-              <button>Store Locator</button>
-              <h3>Find A Store</h3>
-          </div>
-          <!-- Remove the container if you want to extend the Footer to full width. -->
+              <a class="btn btn" href="map" >
+                Store Locator
+                <p class="text-light mt-3">Find A Store</p>
+              </a>
+              
+            </div> 
+           <!--  <div class="col-sm-offset-1" id="map_canvas" style="width:500; height:500"></div>
+            <br>
+            <input type="text" id="lat">
+            <input type="text" id="lng">   -->
           <!-- ==================================================================== -->
-          <!-- width: 100px; height:500px style="background-color:sandybrown;"  -->
           <div class="container my-5">
               <footer id="footer" class="footer-1">
                   <div class="bg-whitesmoke text-center text-dark">
@@ -1293,7 +1337,7 @@
                               <div class="col-xs-12 col-sm-12 col-md-8">
 
                                   <!-- Section: Links -->
-                                  <section class="footer-dec mb-1" style="font-family:Tiemann,serif">
+                                  <section class="footer-dec mb-1" style="font-family:serif">
                                       <!--Grid row-->
                                       <div class="row">
                                           <!--Grid column-->
@@ -1352,28 +1396,25 @@
 
                               <div class="col-xs-12 col-sm-12 col-md-4">
                                   <div class="widget no-box">
-                                      <p style="text-align: left;font-family:Tiemann,serif">SIGN UP AND SAVE<span></span></p>
-                                      <p style="text-align: left;font-family:Tiemann,serif">Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                                      <p style="text-align: left;font-family:serif">SIGN UP AND SAVE<span></span></p>
+                                      <p style="text-align: left;font-family:serif">Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
                                       <form>
                                           <div class="form-group">
                                               <label for="exampleInputEmail1" style="font-family:Futura,san-serif"></label>
                                               <input placeholder="Enter Your Email" type="email" class="form-control" id="exampleInput">
                                           </div>
-
                                           <!-- ------------------------------------------------------------------------------------- -->
                                       </form>
                                       <section class="mb-3" style="text-align: left;">
                                           <!-- Facebook -->
-                                          <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i
-    ></a>
+                                          <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i>
+                                          </a>
                                           <!-- Google -->
-                                          <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i
-    ></a>
-
+                                          <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i>
+                                          </a>
                                           <!-- Instagram -->
-                                          <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i
-    ></a>
-
+                                          <a class="btn btn-outline-dark btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i>
+                                          </a>
                                       </section>
                                   </div>
                               </div>
@@ -1386,7 +1427,7 @@
                       <div class="container">
                           <div class="row">
                               <div class="col-md-12 text-center">
-                                  <p>Copyright Company Name © 2016. All rights reserved.</p>
+                                  <p>Designe & Develop by Jibraeel Mehmood © 2021. All rights reserved.</p>
                               </div>
                           </div>
                       </div>
@@ -1394,25 +1435,53 @@
               </footer>
           </div>
           <!-- ==================================================================== -->
-
-
-
-
-
-
-
     </div>    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" ></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> 
     -->
+    <!-- <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script> --> 
+    <script type="text/javascript">
+    /*
+        var map;
+        function initialize() {
+        var myLatlng = new google.maps.LatLng(36.85341604753753,10.176080866332995);
+        var myOptions = {
+        zoom: 14,
+        minZoom:14,
+        center: myLatlng,
+        draggable:false,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+        }
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+        var marker = new google.maps.Marker({
+
+
+        draggable: true,
+        position: myLatlng, 
+        map: map,
+        });
+        google.maps.event.addListener(marker, 'dragend', function (event) {
+        document.getElementById("lat").value = this.getPosition().lat();
+        document.getElementById("lng").value = this.getPosition().lng();
+        }
+        ); 
+        }
+      */
+    </script>
+
+
+
     {% block js %}
       <script></script>
     {% endblock %}

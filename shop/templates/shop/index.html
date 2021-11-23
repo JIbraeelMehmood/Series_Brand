@@ -1,7 +1,5 @@
 {% extends 'shop/basic_page.html' %}
 {% block css %}
-
-
 .col-md-3
 {
 display: inline-block;
@@ -279,9 +277,184 @@ main[role="main"] {
     z-index: 1;
     right: 0px;
 }
+/* ============================-----------------------============--------------------------============ */
+/* --------- Card Animation ---------- */
+ .card:not(:empty):hover, .card:not(:empty):focus {
+	 z-index: 1;
+	 color: #fff;
+	 background: whitesmoke;
+	 opacity: 1;
+	 transform: scale(1.15) rotateZ(20deg);
+	 cursor: pointer;
+}
+ .card:not(:empty):hover:after, .card:not(:empty):focus:after {
+	 opacity: 1;
+     /* background: blue; */
+}
+ .card:not(:empty):hover:before, .card:not(:empty):focus:before {
+	 opacity: 0;
 
+}
+ .card {
+	 padding: 10px;
+	 background: black;
+	 border-radius: 0.7em;
+	 opacity: 0.6;
+	 display: flex;
+	 justify-content: flex-start;
+	 align-items: flex-end;
+	 transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+	 transition-property: background, transform, color, opacity;
+}
+ .card:not(:empty):before {
+	 box-shadow: -2px 2px 8px 2px rgba(0, 0, 0, 0.2);
+     /* background: purple; */
+} 
 
+ .card:empty {
+	 opacity: 0.3;
+     /* background: green; */
 
+}
+ .card:before, .card:after {
+	 content: "";
+	 position: absolute;
+	 border-radius: 0.7em;
+	 z-index: -1;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+ .card:after {
+	 box-shadow: -20px 20px 12px 6px rgba(0, 0, 0, 0.2);
+	 opacity: 0;
+}
+/* --------- Grid ---------- */
+ .grid {
+	 width: 100%;
+	 height: 500px;
+	 padding: 20px;
+	 display: grid;
+	 overflow: hidden;
+	 grid-template-columns: repeat(5, 1fr);
+	 grid-template-rows: repeat(4, 1fr);
+	 grid-gap: 20px;
+}
+ .item1 {
+	 grid-area: 0.1111111111;
+}
+ .item2 {
+	 grid-area: 0.0625;
+     background-image: url('https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWVucyUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
+     background-position: center center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         width: 100%;
+}
+ .item2.card:hover, .item2.card:focus {
+	 /* background: red;*/
+     background-image: url('https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWVucyUyMGFjY2Vzc29yaWVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
+     background-position: center center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         width: 100%;
+    }
+ .item3 {
+	 grid-area: 0.2;
+     background-image: url('data:image/jpeg;base64,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');
+     background-position: center center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         width: 100%;
+        }
+ .item3.card:hover, .item3.card:focus {
+	 /* background: red;*/
+     background-image: url('data:image/jpeg;base64,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');
+     background-position: center center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         width: 100%;
+    }
+
+ .item4 {
+	 grid-area: 0.0333333333;
+}
+ .item5 {
+	 grid-area: 0.0333333333;
+}
+ .item6 {
+	 grid-area: 0.0375;
+     
+}
+ .item7 {
+	 grid-area: 0.03;
+}
+ .item8 {
+	 grid-area: 0.0166666667;
+}
+ .item8.card:hover, .item8.card:focus {
+	 background: yellow;
+}
+ .item9 {
+	 grid-area: 0.0222222222;
+}
+ .item10 {
+	 grid-area: 0.025;
+}
+ .item11 {
+	 grid-area: 0.0266666667;
+}
+ .item11.card:hover, .item11.card:focus {
+	 background: black;
+}
+ .content {
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+}
+/*--------- Layout -------- */
+/*  -*, *:before, *:after {*/
+     *:before, *:after {
+	 position: relative;
+	 box-sizing: border-box;
+}
+ h1, h2,  h4, h5 {
+	 margin: 2.75rem 0 1.05rem;
+	 line-height: 1.2;
+     background-color: whitesmoke;
+	 font-family: "Jost", sans-serif;
+}
+ h1 {
+	 margin-top: 0;
+	 font-size: 3.052em;
+}
+ h2 {
+	 font-size: 1em;
+}
+ p {
+	 line-height: 1.3;
+}
+/* --------- Responsive ---------- */
+ @media only screen and (max-width: 600px) {
+	 .grid {
+		 grid-template-columns: repeat(2, 1fr);
+		 grid-template-rows: repeat(6, minmax(auto, 300px));
+		 overflow-y: scroll;
+	}
+	 .item1 {
+		 grid-area: 0.1666666667;
+	}
+	 .card {
+		 grid-area: auto;
+		 text-align: left;
+	}
+	 .card:empty {
+		 display: none;
+	}
+}
+ 
 {% endblock %}
 {% block body %}
 {% load static %}
@@ -303,9 +476,9 @@ main[role="main"] {
                 <div class="card-content">
                     <div class="card-img">
                         <div class="big-img">
-                            <img src="/media/A_shop/assests/theme-image4.jpg" alt="" style=" width: 100%;height:800px">
-                            <span><b>SHOP NOW</b></span>
-                            <h3 style="font-family:Tiemann,serif">UNSTITCHED</h3>
+                            <img src="/media/A_shop/assests/theme-image4.jpg" alt="" >
+                            <span>SHOP NOW</span>
+                            <h3 >UNSTITCHED</h3>
                         </div>
                     </div>
 
@@ -315,20 +488,18 @@ main[role="main"] {
                 <div class="card-content">
                     <div class="card-img">
                         <div class="big-img">
-                            <img src="/media/A_shop/assests/theme-image5.jpg" alt="" style=" width: 100% ;height:800px;">
-                            <span><b>SHOP NOW</b></span>
-                            <h3 style="font-family:Tiemann,serif">LUXURY</h3>
+                            <img src="/media/A_shop/assests/theme-image5.jpg" alt="" >
+                            <span>SHOP NOW</span>
+                            <h3>LUXURY</h3>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
         <!-- </div> -->
       </section>
     <!-- =================================================================================== -->
-        <!-- <div style="margin-top:20px;"> -->
-        <div class="row">
+       <!--  <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <img src="/media/A_shop/assests/theme-image1.jpg" alt="" style=" width: 100% ">
             </div>
@@ -341,11 +512,42 @@ main[role="main"] {
                 <img src="/media/A_shop/assests/theme-image3.jpg" alt="" style=" width: 100% ;height:300px;">
             </div>
         </div>
-        <!-- </div> -->
         <div class="sta-1">
             <h3 style="font-family:Tiemann,serif">SHOP BY CATEGORY</h3>
             <button class="btn btn-primery">View All</button>
-        </div>
+        </div> -->
+        <main class="grid bg-">
+            <section class="content item1">
+                <h1>Filter Your Choice</h1>
+                <p>By animating a few CSS paint & composite properties, we can create fun interactions on hover & focus</p> 
+            </section>
+            <section class="card item2">
+                <a href="/shop/category/Men Accessories">
+                    <h2> Men Accessories</h2>   
+                </a>
+            </section>
+            <section class="card item3">
+                <a href="/shop/category/Women Accessories">
+                    <h2> Women Accessories</h2>   
+                </a>
+            </section>
+            <section class="card item4"></section>
+            <section class="card item5">
+                    <h2>because interactions make it more fun<h2>
+            </section>
+            <section class="card item7">
+                <h2>because interactions makemsd fm,sfm,sf it more fun<h2>
+            </section>
+
+            <section class="card item9"></section>
+            <section class="card item8">
+                <h2>animating the shadow on the pseudo element makes it pop out<h2>
+        </section>
+            <section class="card item10"></section>
+            <section class="card item11">
+                <h2>add a :focus state too!<h2>
+            </section>
+        </main>	
     <!-- =================================================================================== -->
     <div class="container">
         <!--Slideshow starts here -->
@@ -383,7 +585,9 @@ main[role="main"] {
                                                 <div class="info">
                                                    <!--  {{i.products_attribute_set.first}} --> 
                                                     <h1 id="namepr{{i.id}}">{{i.product_name}}</h1>
-                                                   
+                                                    <span style="color:red;display: none; "  class="product_price_{{i.id}}"  id="pricepr{{i.id}}">{{i.products_attribute_set.first.price}}</span>
+                                                    <span style="color:red;display: none; "  class="product_size_{{i.id}}"   id="sizepr{{i.id}}">{{i.products_attribute_set.first.size}}</span>
+                                                    <span style="color:red;display: none; "  class="product_color_{{i.id}}"  id="colorpr{{i.id}}">{{i.products_attribute_set.first.color}}</span>
                                                     <p class="card-text">
                                                     {{i.product_descri|slice:"0:25"}}...
                                                     </p>
@@ -418,53 +622,44 @@ main[role="main"] {
                                                 -->
                                             </div>
                                             <div class="product-sidebar">
-                                                 <span id="divpr{{i.id}}" class="divpr ">
-                                                    <span style="color:red;display: none; " class="product_price_{{i.id}}"  id="pricepr{{i.id}}">
-                                                     {{i.products_attribute_set.first.price}}
-                                                    </span>
-                                                    <h1 style="color:red;display: none; "  class="product_size_{{i.id}}"  id="sizepr{{i.id}}">{{i.products_attribute_set.first.size}}</h1>
-                                                    <h1 style="color:red;display: none; "  class="product_color_{{i.id}}"  id="colorpr{{i.id}}">{{i.products_attribute_set.first.color}}</h1>
-
+                                                 <span id="divpr{{i.id}}" class="divpr">
                                                     {% if user.is_authenticated %}
                                                     <button id="pr{{i.id}}" class="buy cart">
                                                         <span>BUY ITEM</span>                    
                                                     </button>
                                                     {% endif %}
                                                 </span>
-
-                                            <button class="info">
-                                                <span>
-                                                    <a href="/shop/productview/{{i.id}}" class="text-light"  style="vertical-align:middle" id="qv{{i.id}}">
-                                                        MORE INFO
-                                                    </a>
-                                                </span>
-                                            </button>
-                                            {% if i.products_attribute_set.first.color %}
-                                            <button class="size">
-                                                <span>
-                                                    {% for vari_obj in i.products_attribute_set.all %} 
-                                                        <a style=" font-weight: 600;  font-size: 15px;" product_size_id="{{i.id}}"  size_price="{{vari_obj.price}}"  size="{{vari_obj.size}}" onclick="FunctionSize(this)" > {{vari_obj.size}}  </a>
-                                                    {% endfor %} 
-                                                </span>
-                                            </button>
-                                            {% endif %}
-
-                                            {% if i.products_attribute_set.first.color %}
-                                            <button class="colors">
-                                                <span>
-                                                {% for vari_obj in i.products_attribute_set.all %} 
-                                                    <span href="" class="color " product_color_id="{{i.id}}" color="{{vari_obj.color}}" onclick="FunctionColor(this)"  style="background-color:{{vari_obj.color}};"> 
-                                                    </span>
-                                                {% endfor %} 
-                                                    <!--
-                                                        <a href="" class="color " style="background-color:{{i.products_attribute_set.first.color}};"> 
-                                                            {{i.products_attribute_set.first.color}}
+                                                <button class="info">
+                                                    <span>
+                                                        <a href="/shop/productview/{{i.id}}" class="text-light"  style="vertical-align:middle" id="qv{{i.id}}">
+                                                            MORE INFO
                                                         </a>
-                                                    -->
-                                                </span>
-                                            </button>
-                                            {% endif %}
-
+                                                    </span>
+                                                </button>
+                                                {% if i.products_attribute_set.first.size %}
+                                                <button class="size">
+                                                    <span>
+                                                        {% for vari_obj in i.products_attribute_set.all %} 
+                                                            <a style=" font-weight: 600; margin: 0px 0px 0px 4px ; font-size: 10px; padding: 3px; justify-self: center;" class="bg-dark text-light" product_size_id="{{i.id}}"  size_price="{{vari_obj.price}}"  size="{{vari_obj.size}}" onclick="FunctionSize(this)" > {{vari_obj.size}}  </a>
+                                                        {% endfor %} 
+                                                    </span>
+                                                </button>
+                                                {% endif %}
+                                                {% if i.products_attribute_set.first.color %}
+                                                <button class="colors">
+                                                    <span>
+                                                    {% for vari_obj in i.products_attribute_set.all %} 
+                                                        <span href="" class="color " product_color_id="{{i.id}}" color="{{vari_obj.color}}" onclick="FunctionColor(this)"  style="background-color:{{vari_obj.color}};"> 
+                                                        </span>
+                                                    {% endfor %} 
+                                                        <!--
+                                                            <a href="" class="color " style="background-color:{{i.products_attribute_set.first.color}};"> 
+                                                                {{i.products_attribute_set.first.color}}
+                                                            </a>
+                                                        -->
+                                                    </span>
+                                                </button>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </main>
@@ -491,15 +686,13 @@ main[role="main"] {
         {% endfor %}
 
         <!-- ----------------------------------------------------------------------------------------------------- -->
-        <div class="sta-1">
+            <div class="sta-1">
             <h3 style="font-family:Tiemann,serif">FEATURED COLLECTION</h3>
               <button class="btn btn-primery">View All</button>
           </div>
-          <section class="details-card" style="background-color:white;">
+          <!-- <section class="details-card" style="background-color:white;">
             <div class="container-fluid">
                 <div class="row">
-                    <!-- width: 100px; height:500px style="background-color:sandybrown;" stretched-link  -->
-
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                         <a class="card-block    text-decoration-none" href>
                             <div class="card text-center">
@@ -550,7 +743,7 @@ main[role="main"] {
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
         <!-- ------------------------------------------------------------------------------------------------------ -->
 
     </div>
@@ -682,9 +875,6 @@ main[role="main"] {
                 <!--&lt;!&ndash;    });&ndash;&gt;-->
                 <!--};-->
             */
-
-  
-
     function FunctionColor(e) 
     {
         //var oldPrice = $('.setprice').val();
@@ -705,7 +895,6 @@ main[role="main"] {
         var setcolor = $(product).html(fetchColor);
         var setbackground = $(product).css({"background-color": fetchColor});
         var setcolor = $(dynamiccolor).html(fetchColor);
-
     }
 
     function FunctionSize(e) 
@@ -735,84 +924,134 @@ main[role="main"] {
 
         $('.divpr').on('click', 'button.cart', function() {
             var idstr = this.id.toString();
+                //console.log(idstr)
             if (cart[idstr] != undefined) {
                 //=========================================================
-                //price = document.getElementById('price'+idstr).innerHTM
-                //size = document.getElementsByClassName('setsize').innerHTML
-                //color = document.getElementsByClassName('setcolor').innerHTML
-                //=========================================================
                 qty = cart[idstr][0] + 1;
-                //oldprice = document.getElementById('price'+idstr).innerHTML
-                //price = cart[idstr][2] = oldprice ;
-
             } else {
                 qty = 1;
-                name = document.getElementById('name'+idstr).innerHTML
-                price = document.getElementById('price'+idstr).innerHTML
-                size = document.getElementById('size'+idstr).innerHTML
-                color = document.getElementById('color'+idstr).innerHTML
+                name = document.getElementById('name'+idstr).innerHTML;
+                price = document.getElementById('price'+idstr).innerHTML;
+                size = document.getElementById('size'+idstr).innerHTML;
+                color = document.getElementById('color'+idstr).innerHTML;
+
+                var newTodoInput = {}; // <-- This is the key to this working properly
+                    newTodoInput.price = price ; // obj
+                    newTodoInput.size = size ; // obj
+                    newTodoInput.color = color ; // obj
+                product_variante = [newTodoInput];
                 //=========================================================
-                //size = document.getElementsByClassName('setsize').innerHTML
-                //color = document.getElementsByClassName('setcolor').innerHTML
-                //=========================================================
-                //console.log(qty);
                 //console.log(name);
-                //console.log(price);
-                //console.log(size);
-                //console.log(color);
-                cart[idstr] = [qty, name,parseInt(price),size,color];
+                cart[idstr] = [qty, name,parseInt(price),size,color,product_variante];
             }
             updateCart(cart);
         });
         //Add Popover to cart
-        $('#popcart').popover();
+        //$('#popcart').popover();
         updatePopover(cart);
 
-        function updatePopover(cart) {
+        function updatePopover(cart) 
+        {
             //console.log('We are inside updatePopover');
+            /*
+                var popStr = "";
+                popStr = popStr + "<p> To Hide Click On Cart Icon: </p>";
+                popStr = popStr+ 
+                    "<table class='table'><thead>"+
+                    "<tr><td>ITEM</td><td>NAME</td><td>VARIANTS</td><td>QTY</td></tr>"+
+                    "</thead>";
+                var i = 1;
+                for (var item in cart)   
+                    {
+                        popStr = popStr + "<tbody> <tr>"+ "<td><b>"+i+"</b>.</td>";
+                        popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>";
+                        //"<td> "+ cart[item][3]+" "+ cart[item][4] +"</td>"+
+                        popStr = popStr + "<td> ";
+                        for (j = 0, len = cart[item][5].length; j < len; j++) 
+                        {
+                            popStr = popStr +"| "+cart[item][5][j].size+"-"+cart[item][5][j].color +" |"; 
+                        }
+                        popStr = popStr +"</td>";
+                        popStr = popStr + "<td>" + cart[item][0] + "</td>";
+                        i = i + 1;
+                    }
+                popStr = popStr + "</tr> </tbody>";
+                popStr = popStr + "</table>";
+                popStr = popStr +
+                "<div class='bg-'>"+
+                    "<a class='btn btn-sm btn-secondary m-2' id ='checkout'  href='/shop/cheakout'>Checkout</a>"+ 
+                    "<a class='btn btn-sm btn-danger m-2 float-right' id ='clearCart' onclick='clearCart()'>Clear Cart</a>"+
+                "<div>";
+                //console.log(popStr);
+                document.getElementById('popcart').setAttribute('data-content', popStr);
+                $('#popcart').popover('show');
+            */
+//==================================================================================================
+            
             var popStr = "";
-        //----------------------------------------------------------------------------------------------
-            popStr = popStr + "<p> To Hide Click On Cart Icon: </p>";
-        //=========================================================================================
-            popStr = popStr+ 
-                "<table class='table'><thead>"+
-                "<tr><td>ITEM</td><td>NAME</td><td>VARIANTS</td><td>QTY</td></tr>"+
-                "</thead>";
             var i = 1;
-            for (var item in cart)   
-                {
-                    popStr = popStr + "<tbody <tr>"+ "<td><b>"+i+"</b>.</td>";
-                    popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>"+
-                    //"<td> "+size+" "+color +"</td>"+
-                    "<td> "+ " " +"</td>"+
-                    "<td>" + cart[item][0] + "</td>";
-                    i = i + 1;
-                }
-            popStr = popStr + "</tr> </tbody>";
-            popStr = popStr +
-            "<div class='bg-'>"+
-                "<a class='btn btn-sm btn-secondary m-2' id ='checkout'  href='/shop/cheakout'>Checkout</a>"+ 
-                "<a class='btn btn-sm btn-danger m-2 float-right'    id ='clearCart' onclick='clearCart()'>Clear Cart</a>"+
-            "<div>";
-            //console.log(popStr);
-            document.getElementById('popcart').setAttribute('data-content', popStr);
-            $('#popcart').popover('show');
+
+                    //for (var item in cart)   
+                    //{
+                        //popStr = popStr + "<tr>"+ "<td><b>"+i+"</b>.</td>";
+                        //popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>"+
+                        ////"<td> "+ cart[item][3]+" "+ cart[item][4] +"</td>"+
+                        //"<td> "+ cart[item][5][1].price  +"</td>"+
+                        //"<td>" + cart[item][0] + "</td>";
+                        //i = i + 1;
+                    //}
+//------------------------------------------------------------------------
+                for (var item in cart)   
+                    {
+                            popStr = popStr + "<tr class='bg-'>"+ "<td><b>"+i+"</b>.</td>";
+                            popStr = popStr + "<td>"+document.getElementById('name' + item).innerHTML.slice(0, 19)+"</td>";
+                            //"<td> "+ cart[item][3]+" "+ cart[item][4] +"</td>"+
+                            popStr = popStr + "<td  class='bg-' > ";
+                        for (j = 0, len = cart[item][5].length; j < len; j++) 
+                        {
+                            popStr = popStr +"<span  class='font-weight-bold'>||  </span>"+cart[item][5][j].size+" "; 
+                        }
+                        popStr = popStr +"</td>";
+                        //*****************************************************
+                        popStr = popStr + "<td  class='bg- '>";
+                        popStr = popStr + "<div  class='row bg- '>";
+                            for (j = 0, len = cart[item][5].length; j < len; j++) 
+                            {
+                                popStr = popStr +"<div class='col-3' style='margin:5px;height: 18px; width: 18px; background-color:"+cart[item][5][j].color+"'; >"+"</div>";
+                                /*"<span style='color: #aaa;font-size: 11px;padding: 5px;'  class='font-weight-bold'>"+
+                                    cart[item][5][j].size+
+                                "</span>"+*/
+                                //popStr = popStr +"<span style='margin:2px;height: 5px; width: 10px; background-color:"+cart[item][5][j].color+"'; >&nbsp;&nbsp;&nbsp;</span>"; 
+                                //popStr = popStr +"<span  class='btn btn-dark btn-sm' > "+cart[item][5][j].color+"</span>"; 
+                            }
+                        popStr = popStr +"</div>";
+                        popStr = popStr +"</td>";
+
+                        popStr = popStr + "<td>" + cart[item][0] + "</td>";
+                            i = i + 1;
+                        popStr = popStr + "</tr> ";
+                    }
+//-------------------------------------------------------------------------
+                $('#ProductItems').html(popStr);
+                   
         }
 
         function clearCart() {
             cart = JSON.parse(localStorage.getItem('cart')); 
-            for (var item in cart) {
-                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class=" cart buy"><span>BUY ITEM</span> </button>'
-
-            }
+            //alert(cart);
+            for (var item in cart) 
+            {
+                //alert('div' + item);
+                document.getElementById('div' + item).innerHTML = '<button id="'+ item + '" class=" cart buy"><span>BUY ITEM</span> </button>';
+                ///divparHtml= document.getElementById('div' + item).innerHTML;
+                //alert(divparHtml);
+            }        
             localStorage.clear();
             cart = {};
             updateCart(cart);
-
         }
 
         function updateCart(cart) {
-
             var sum = 0;
             for (var item in cart) {
                 sum = sum + cart[item][0];
@@ -823,11 +1062,36 @@ main[role="main"] {
             console.log(cart);
             updatePopover(cart);
         }
+
+        
         // If plus or minus button is clicked, change the cart as well as the display value
         $('.divpr').on("click", "button.minus", function() {
             a = this.id.slice(7, );
             cart['pr' + a][0] = cart['pr' + a][0] - 1;
             cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+
+
+            cart['pr' + a][5].forEach(function(i, idx, array){
+                if (idx === array.length - 1){ 
+                    //console.log("Last callback call at index " + idx + " with value " + i.price );
+                    //console.log('Current Total Price ->' +cart['pr' + a][2]); 
+                        priceControl=cart['pr' + a][2] - i.price;
+                        newItemPrice=cart['pr' + a][2] = priceControl;
+                    //console.log('after Price Control ->' +newItemPrice); 
+                }
+                });
+            //for (j = 0, len = cart['pr' + a][5].length; j < len; j++) 
+                //{
+                    //console.log(' Cart ->' +cart['pr' + a][5][j].color );  
+                //}
+
+            variavntArray = cart['pr' + a][5];
+            //console.log('Variant  Array ->' +variavntArray);
+            //console.log('Variant Array  Length->' +variavntArray.length);  
+            variavntArray.pop();
+            //console.log('Variant Array  Length After POP->' +variavntArray.length);
+            //console.log('Current Variant  Array ->' +cart['pr' + a][5]);  
+
         //<!--    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];-->
             if (cart['pr'+ a][0]==0){
                 document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="cart buy"><span>BUY ITEM</span></button>';
@@ -839,10 +1103,65 @@ main[role="main"] {
 
             updateCart(cart);
         });
+
+
         $('.divpr').on("click", "button.plus", function() {
             a = this.id.slice(6, );
+            // productItem id -> console.log(a);
+            makeProductID ='pr'+ a;
+            //console.log('productPrice ->'+makeProductID);
             cart['pr' + a][0] = cart['pr' + a][0] + 1;
-            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+            productItem = document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+            //console.log('ProductItem -> '+'pr'+ a+'||'+'ItemNo ->'+ productItem);
+            getPrice = document.getElementById('price'+makeProductID).innerHTML;
+            newSize = document.getElementById('size'+makeProductID).innerHTML;
+            newColor = document.getElementById('color'+makeProductID).innerHTML;
+            //console.log(newPrice);
+            setPrice=parseInt(getPrice)
+            //console.log(cart['pr' + a][2]);
+            newPrice=cart['pr' + a][2] + setPrice;
+            newItemPrice=cart['pr' + a][2]=newPrice;
+            //console.log(newItemPrice);
+            //newItemSize = cart['pr' + a][3] =  newSize;
+            //console.log(newItemSize);
+            //--------------------------------------------------------------
+            /*
+                //RUN Use for INDEX 4 COLOR
+                //console.log('Previous Color ->' +cart['pr' + a][4]);
+                if(typeof cart['pr' + a][4] === 'string') {
+                    var inputValues = [cart['pr' + a][4]];
+                    newItemColor = cart['pr' + a][4] =  inputValues;
+                    //console.log('Start to build Color  Array ->' +newItemColor);
+                    //console.log('Color Array  Length->' +newItemColor.length);
+                    newItemColor[newItemColor.length] = newColor;
+                    //console.log('Color Array  Length After Push->' +newItemColor.length);
+                //console.log('Current Color Array ->' +cart['pr' + a][4]);
+                }
+                else{
+                    //console.log('========================================');  
+                    newItemColor = cart['pr' + a][4];
+                    //console.log('Color  Array ->' +newItemColor);
+                    //console.log('Color Array  Length->' +newItemColor.length);
+                    //newItemColor[newItemColor.length] = newColor;
+                    newItemColor.push(newColor);
+                    //console.log('Color Array  Length After Push->' +newItemColor.length);
+                    //console.log('Current Color Array ->' +cart['pr' + a][4]);  
+                    //console.log('========================================');  
+                }
+            */
+            //===========================-------------------====================-------
+                variavntArray = cart['pr' + a][5];
+                //console.log('Variant  Array ->' +newItem);
+                //console.log('Variant Array  Length->' +newItem.length);  
+                var newItem = {}; // <-- This is the key to this working properly
+                    newItem.price = getPrice ; // obj
+                    newItem.size = newSize ; // obj
+                    newItem.color = newColor ; // obj
+                    //newTodoInput.id = productItem;
+                    variavntArray.push(newItem);
+                //console.log('Variant Array  Length After Push->' +newItem.length);
+                //console.log('Current Variant  Array ->' +cart['pr' + a][5]);  
+            //----------------------------------------------------------------
             updateCart(cart);
         });
 </script>
